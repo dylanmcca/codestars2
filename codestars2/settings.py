@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-f406__xzii_3bm##m8n4*5ptgtz27qw(gubk9bd@tzmuv^^4hr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.herokuapp.com']
+ALLOWED_HOSTS = ['.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -84,6 +84,7 @@ WSGI_APPLICATION = 'codestars2.wsgi.application'
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 #}
+
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
