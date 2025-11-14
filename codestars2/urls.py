@@ -17,9 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from blog.views import my_blog
+from blog.views import my_blog, home
+
 
 
 urlpatterns = [
+    path('', home, name='home'),  # Root URL
     path('blog/', my_blog, name='my_blog'),
     path('admin/', admin.site.urls),
 ]
