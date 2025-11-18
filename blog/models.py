@@ -15,6 +15,14 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
+        
+
+class Meta:
+        ordering = ["-created_on"]
+
+
+def __str__(self):
+    return f"The title of this post is {self.title}"    
 
     # I added excerpt field above as part of the challenge
 
