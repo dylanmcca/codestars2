@@ -1,1 +1,0 @@
-console.log("Life is great! Enjoy coding!");

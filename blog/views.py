@@ -48,10 +48,26 @@ def post_detail(request, slug):
         },
     )
 
+
 class PostList(generic.ListView):
     queryset = Post.objects.all()
     template_name = "blog/index.html"
     paginate_by = 6
+
+
+def comment_delete(request, slug, comment_id):
+    """Delete a comment if the user is the author"""
+    queryset = Post.objects.filter(status=1)
+    post = get_object_or_404(queryset, slug=slug)
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    if comment.author == request.user:
+        comment.delete()
+        messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
+    else:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+
+    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
 def comment_edit(request, slug, comment_id):
