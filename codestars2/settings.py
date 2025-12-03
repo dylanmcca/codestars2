@@ -44,8 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary_storage',
-    'cloudinary',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -56,6 +54,11 @@ INSTALLED_APPS = [
     'blog',
     'about',
 ]
+
+# Add cloudinary apps only if CLOUDINARY_URL is configured
+if os.environ.get('CLOUDINARY_URL'):
+    INSTALLED_APPS.insert(0, 'cloudinary_storage')
+    INSTALLED_APPS.insert(1, 'cloudinary')
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
@@ -148,6 +151,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Cloudinary configuration - only use if CLOUDINARY_URL is set
+if os.environ.get('CLOUDINARY_URL'):
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
