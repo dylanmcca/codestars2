@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from django.contrib.messages import constants as messages
 import sys
 import dj_database_url
 if os.path.isfile('env.py'):
@@ -154,6 +155,11 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+MESSAGES_TAGS = {
+    messages.SUCCESS: 'alert-success',
+    messages.ERROR: 'alert-danger',
+}
 
 # Cloudinary configuration - only use if CLOUDINARY_URL is set
 if os.environ.get('CLOUDINARY_URL'):
