@@ -163,3 +163,45 @@ body {
 .approval {
     color: rgb(222, 146, 168);
 }
+
+/* Message Alert Styling */
+.alert {
+    border-radius: 8px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 5px solid #28a745;
+}
+
+.alert-success .btn-close {
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(60deg);
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 5px solid #dc3545;
+}
+
+.alert-danger .btn-close {
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(0deg);
+}
